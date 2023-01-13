@@ -1,0 +1,23 @@
+.container{
+    width:100%;
+    border: 2px solid rgb(207, 197, 197);
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 25px 20px;
+    min-height:80vh;
+    font-weight: bold;
+}
+
+.btn{
+    text-decoration: none;
+}
+
+.field{
+    color: red;
+}
+
+.info{
+    margin: 5px auto;
+    white-space: initial;
+    word-wrap: break-word
+}

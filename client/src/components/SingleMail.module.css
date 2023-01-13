@@ -1,0 +1,43 @@
+
+.container{
+    border: 2px solid rgb(207, 197, 197);
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.container:hover{
+    transform: scale(1.005);
+    box-shadow: 4px 4px lightgrey;
+}
+
+.btn{
+    text-decoration: none;
+    margin-top: 7px;
+    font-size: 22px;
+}
+
+.btn:first-child{
+    margin-right: 12px;
+}
+
+.btn:hover{
+    transform: scale(1.5);
+}
+
+.wrap{
+    max-height: 22.5px;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 767px){
+    .subject{
+        display:none;
+    }
+}

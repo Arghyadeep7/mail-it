@@ -1,0 +1,37 @@
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.compose_container {
+  padding: 20px 0px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+    border: 2px solid rgb(135, 128, 128);
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+/* Set a style for the submit/register button */
+.sendbtn {
+    text-align: center;
+    background-color: rgb(236, 48, 48);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transform: translateX(+50%) translateY(-10%);
+    width: 50%;
+}
+
+.sendbtn:hover {
+  background-color: red;
+}

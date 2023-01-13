@@ -1,0 +1,15 @@
+.header{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+}
+
+.link:hover{
+    text-decoration: underline;
+}
