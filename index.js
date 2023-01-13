@@ -131,14 +131,21 @@ app.post("/api/register",(req,res)=>{
 
 app.post("/api/send",(req,res)=>{
 
-    const date=new Date();
+    var hour=IST.getHours();
+    if(hour<10){
+        hour="0"+hour;
+    }
+    var minute=IST.getMinutes();
+    if(minute<10){
+        minute="0"+minute;
+    }
 
     const dateObj={
         date:IST.getDate(),
         month:IST.getMonth()+1,
         year:IST.getFullYear(),
-        hour:IST.getHours(),
-        minute:IST.getMinutes(),
+        hour:hour,
+        minute:minute,
         _id:ObjectId()
     };
 
@@ -283,7 +290,7 @@ app.post("/api/deleteAll",(req,res)=>{
         });
     }
 
-    for(let i=0;i<1000000000;i++);
+    for(let i=0;i<800000000;i++);
 
     // console.log("time exploited");
 
