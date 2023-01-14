@@ -16,8 +16,8 @@ const SingleMail = (props) => {
     const handler=async (url)=>{
 
         const obj={
-            _id:props.mail._id,
-            username:props.username
+            username:props.username,
+            ids:[props.mail._id]
         };
 
         if(url==="/api/star"){
@@ -32,7 +32,7 @@ const SingleMail = (props) => {
             body: JSON.stringify(obj),
         }).then(res=>res.json());
 
-        if(response.message==="SUCCESSFUL!"){
+        if(response.message==="SUCCESSFUL"){
             
             if(url==="/api/star"){
                 setStar(!star);
@@ -71,8 +71,8 @@ const SingleMail = (props) => {
                 </Col>
                 
                 <Col xs={2} md={1} style={{display:"flex", justifyContent:'center'}}>
-                    <Link className={styles.btn} style={{color:'red'}} onClick={()=>handler("/api/delete")}><i className="fa-solid fa-trash-can"></i></Link>
                     <Link className={styles.btn} style={{color:'gold'}} onClick={()=>handler("/api/star")}><i className={`fa-${star?'solid':'regular'} fa-star`}></i></Link>
+                    <Link className={styles.btn} style={{color:'red'}} onClick={()=>handler("/api/delete")}><i className="fa-solid fa-trash-can"></i></Link>
                 </Col>
             </Row>
         </Link>

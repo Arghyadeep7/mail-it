@@ -85,7 +85,7 @@ app.post("/api/login",(req,res)=>{
         }else if(foundItem===null){
             return res.status(400).json({message:"NOT FOUND"});
         }else{
-            console.log("LOGIN SUCCESSFUL!");
+            console.log("LOGIN SUCCESSFUL");
             return res.status(200).json({...foundItem,message:"FOUND"});
         }
     });
@@ -116,7 +116,7 @@ app.post("/api/register",(req,res)=>{
                     if(err){
                         return res.status(400).json({message:"ERROR"});
                     }else{
-                        console.log("USER REGISTRATION SUCCESSFUL!");
+                        console.log("USER REGISTRATION SUCCESSFUL");
                         return res.status(200).json({message:"USER REGISTRATION SUCCESSFUL"});
                     }
                 });
@@ -153,7 +153,7 @@ app.post("/api/send",(req,res)=>{
         if(err){
             console.log(err);
         }else if(foundItem===null){
-            res.status(400).json({message:"NOT FOUND!"});
+            res.status(400).json({message:"NOT "});
         }else{
 
             const mail={
@@ -198,7 +198,7 @@ app.post("/api/send",(req,res)=>{
                         if(err){
                             console.log(err);
                         }else{
-                            res.status(200).json({message:"SUCCESSFUL!"});
+                            res.status(200).json({message:"SUCCESSFUL"});
                         }
                     });
                 }
@@ -226,12 +226,12 @@ app.post("/api/star",(req,res)=>{
     
     const mail=req.body;
 
-    User.collection.updateOne({username:mail.username,"mails._id":ObjectId(mail._id)},
+    User.collection.updateOne({username:mail.username,"mails._id":ObjectId(mail.ids[0])},
         {$set:{"mails.$.starred":mail.starred}},(err)=>{
         if(err){
             console.log(err);
         }else{
-            res.status(200).json({message:"SUCCESSFUL!"});
+            res.status(200).json({message:"SUCCESSFUL"});
         }
     });
 
@@ -246,32 +246,13 @@ app.post("/api/opened",(req,res)=>{
         if(err){
             console.log(err);
         }else{
-            res.status(200).json({message:"SUCCESSFUL!"});
+            res.status(200).json({message:"SUCCESSFUL"});
         }
     });
 
 });
 
 app.post("/api/delete",(req,res)=>{
-    
-    const mail=req.body;
-
-    User.collection.updateOne({username:mail.username},{
-        $pull:{
-            mails:{
-                _id:ObjectId(mail._id)
-            }
-        }
-    },(err)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.status(200).json({message:"SUCCESSFUL!"});
-        }
-    });
-});
-
-app.post("/api/deleteAll",(req,res)=>{
     
     const mail=req.body;
 
@@ -289,10 +270,6 @@ app.post("/api/deleteAll",(req,res)=>{
             }
         });
     }
-
-    for(let i=0;i<800000000;i++);
-
-    // console.log("time exploited");
 
     res.status(200).json({message:"SUCCESSFUL"});
 

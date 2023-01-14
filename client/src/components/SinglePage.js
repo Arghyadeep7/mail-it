@@ -70,7 +70,7 @@ const SinglePage = (props) => {
       body: JSON.stringify(obj),
     }).then((res) => res.json());
 
-    if (response.message === "SUCCESSFUL!") {
+    if (response.message === "SUCCESSFUL") {
       if (url==="/api/star") {
         setStar(!star);
       } else if(url!=="/api/opened"){

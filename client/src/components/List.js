@@ -53,13 +53,13 @@ const List = (props) => {
         setLoading(false);
     };
 
-    const deleteAllHandler=async()=>{
+    const deleteHandler=async()=>{
 
         const ids=data.map((mail)=>{
             return mail._id;
         });
 
-        const response=await fetch("/api/deleteAll",{
+        const response=await fetch("/api/delete",{
             method: "POST",
             headers:{
                 "Content-Type": "application/json"
@@ -71,7 +71,8 @@ const List = (props) => {
         }).then(res=>res.json());
 
         if(response.message==="SUCCESSFUL"){
-            window.location.reload(true);
+            setData([]);
+            // window.location.reload(true);
         }else{
             alert("Some error occurred!\nPlease try again later.");
         }
@@ -87,7 +88,7 @@ const List = (props) => {
             {!loading && data.length!==0 &&
                 <div style={{display:"flex", justifyContent:"space-between"}}>
                     <div style={{margin:"10px auto"}}><b><i style={{textTransform:"uppercase"}}>{props.type} MAILS: {data.length}</i></b></div>
-                    <Link style={{margin:"10px auto", textDecoration:"none"}} onClick={deleteAllHandler}>
+                    <Link style={{margin:"10px auto", textDecoration:"none"}} onClick={deleteHandler}>
                         <b>
                             <i style={{color:"red"}}><i className="fa-solid fa-trash-can"></i> DELETE ALL</i>
                         </b>

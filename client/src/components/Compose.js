@@ -43,7 +43,7 @@ const Compose = () => {
 
         setLoading(false);
 
-        if(response.message==="NOT FOUND!"){
+        if(response.message==="NOT FOUND"){
             setError(true);
         }else{
             navigate("/sent");
