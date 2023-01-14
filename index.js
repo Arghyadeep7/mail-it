@@ -15,14 +15,6 @@ async function main(){
 
 main().catch(err=>console.log(err));
 
-const currentTime = new Date();
-
-const currentOffset = currentTime.getTimezoneOffset();
-
-const ISTOffset = 330;   // IST offset UTC +5:30 
-
-const IST = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
-
 app.listen(process.env.PORT || 3000,()=>{
     console.log("Connection Successful!");
 });
@@ -130,6 +122,14 @@ app.post("/api/register",(req,res)=>{
 });
 
 app.post("/api/send",(req,res)=>{
+
+    const currentTime = new Date();
+
+    const currentOffset = currentTime.getTimezoneOffset();
+
+    const ISTOffset = 330;   // IST offset UTC +5:30 
+
+    const IST = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
 
     var hour=IST.getHours();
     if(hour<10){
