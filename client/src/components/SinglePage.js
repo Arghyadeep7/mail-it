@@ -52,7 +52,7 @@ const SinglePage = (props) => {
 
   const handler = async (url) => {
     const obj = {
-      _id: data._id,
+      ids: [data._id],
       username: username,
     };
 

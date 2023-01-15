@@ -241,7 +241,7 @@ app.post("/api/opened",(req,res)=>{
     
     const mail=req.body;
 
-    User.collection.updateOne({username:mail.username,"mails._id":ObjectId(mail._id)},
+    User.collection.updateOne({username:mail.username,"mails._id":ObjectId(mail.ids[0])},
         {$set:{"mails.$.stat":mail.stat}},(err)=>{
         if(err){
             console.log(err);
