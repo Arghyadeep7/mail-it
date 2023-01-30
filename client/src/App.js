@@ -36,7 +36,7 @@ function App() {
       
       <Route path="/profile" element={ loggedIn?<Profile />:<Navigate replace to="/login" />    } />
 
-      <Route path="*" element={ <Navigate replace to={!loggedIn?"/login":"/inbox"} />} />
+      <Route path="*" element={ <Navigate replace to={!loggedIn?"/":"/inbox"} />} />
     </Routes>
     </>
   );
