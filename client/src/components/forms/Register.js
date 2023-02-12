@@ -254,8 +254,8 @@ const Register = () => {
                 <li>Username must start with a letter!</li>
                 <li>Username must not contain any whitespaces!</li>
               </ul>
+              <hr />
               <ul style={{margin:"20px auto",color:pwError?"red":"black"}}>
-                <hr />
                 <li>Password must be atleast 8 characters long!</li>
                 <li>Password must contain atleast 1 digit!</li>
                 <li>Password must contain atleast one special symbol(!,@,#,$,%,^,&,*)!</li>
