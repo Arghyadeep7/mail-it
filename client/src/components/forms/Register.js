@@ -201,7 +201,7 @@ const Register = () => {
             <span style={{display:"flex",justifyContent:"space-between"}}>
               <label htmlFor="username"><h4>USERNAME*</h4></label>
               {!usernameError && 
-                <Button variant="primary" onClick={checkHandler} >
+                <Button variant="primary" onClick={checkHandler} size="sm">
                   {checkLoad?
                     <>
                     <Spinner animation="border" size="sm"/>
