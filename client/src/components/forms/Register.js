@@ -188,7 +188,7 @@ const Register = () => {
 
             <label htmlFor="num"><h4>PHONE NUMBER</h4></label>
             {
-              numError && <b style={{color: 'red'}}><br />Ph. number must contain 10 digits!<br/></b>
+              numError && <b style={{color: 'red'}}><br />Ph. number must contain 10 digits only!<br/></b>
             }
             <input type="text" placeholder="Enter Ph. Number (10 digits)" name="num" id="num"
               ref={numRef}
@@ -212,9 +212,9 @@ const Register = () => {
                 </Button>
               }
             </span>
-            {
+            {/* {
               usernameError && <b style={{color: 'red'}}>Please follow given username guidelines!<br/></b>
-            }
+            } */}
             {
               !usernameError && checkError==="FOUND" && <b style={{color: 'red'}}>Username already exists! Try a different one.<br/></b>
             }
@@ -228,9 +228,9 @@ const Register = () => {
               required />
 
             <label htmlFor="pw"><h4>PASSWORD*</h4></label>
-            {
+            {/* {
               pwError && <b style={{color: 'red'}}><br />Please follow given password guidelines!<br/></b>
-            }
+            } */}
             <input type="password" placeholder="Enter Password" name="pw" id="pw"
               ref={pwRef}
               onChange={pwHandler}
@@ -250,9 +250,11 @@ const Register = () => {
           </Col>
           <Col md={4}>
             <h6>
-              <ul style={{margin:"20px auto"}}>
+              <ul style={{margin:"20px auto",color:usernameError?"red":"black"}}>
                 <li>Username must start with a letter!</li>
                 <li>Username must not contain any whitespaces!</li>
+              </ul>
+              <ul style={{margin:"20px auto",color:pwError?"red":"black"}}>
                 <hr />
                 <li>Password must be atleast 8 characters long!</li>
                 <li>Password must contain atleast 1 digit!</li>
@@ -272,7 +274,7 @@ const Register = () => {
                   :
                   <div style={{display:"flex", justifyContent: "center"}}>
                     <Spinner animation="border" />
-                    <h4>&nbsp;LOADING...</h4>
+                    &nbsp;LOADING...
                   </div>
                 }
                 </h4>
