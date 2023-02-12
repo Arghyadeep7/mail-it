@@ -154,7 +154,7 @@ app.post("/api/send",(req,res)=>{
         if(err){
             console.log(err);
         }else if(foundItem===null){
-            res.status(400).json({message:"NOT "});
+            res.status(400).json({message:"NOT FOUND"});
         }else{
 
             const mail={
