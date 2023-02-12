@@ -19,7 +19,7 @@ const Header = () => {
   const [show, setShow] = useState(false);
 
   const handleShow = () =>{
-    if(window.innerWidth<512){
+    if(window.innerWidth<=767){
       setShow(!show);
     }
   }
@@ -41,7 +41,7 @@ const Header = () => {
         </Link>
         <Navbar.Toggle aria-controls="offcanvasNavbar-expand-sm" onClick={handleShow}/>
         <Navbar.Offcanvas
-          id="offcanvasNavbar-expand-md"
+          id="offcanvasNavbar-expand-sm"
           aria-labelledby="offcanvasNavbarLabel-expand-sm"
           placement="start"
 
@@ -49,7 +49,7 @@ const Header = () => {
           onHide={handleShow}
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbar-expand-md">
+            <Offcanvas.Title id="offcanvasNavbar-expand-sm">
             <Link to="/inbox" className={styles.header} onClick={handleShow}>
               <div style={{display:"flex",justifyContent:"center"}}>
                 <img src={Icon} alt="Icon" />

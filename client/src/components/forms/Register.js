@@ -55,8 +55,8 @@ const Register = () => {
     setCheck("");
   }
 
-  const request=async(obj)=>{
-    const response=await fetch("/api/register",{
+  const request=async(url,obj)=>{
+    const response=await fetch("/api/"+url,{
       method:"POST",
       headers:{
         "Content-Type": "application/json"
@@ -72,14 +72,17 @@ const Register = () => {
 
       setCheckLoad(true);
 
-      const response=await request({
+      const response=await request("search",{
         username:usernameRef.current.value,
-        type:"SEARCH"
       });
 
-      setCheck(response.message);
+      if(response.message==="ERROR"){
+        alert("Some error has occurred!\nPlease try again later.")
+      }else{
+        setCheck(response.message);
 
-      setCheckLoad(false);
+        setCheckLoad(false);
+      }
       
     }else if(usernameRef.current.value===""){
       setCheck("");
@@ -116,44 +119,50 @@ const Register = () => {
       
       setSubmitLoad(true);
 
-      const obj={
-        username:usernameRef.current.value.trim(),
-        fname:fnameRef.current.value.trim(),
-        lname:lnameRef.current.value.trim(),
-        num:numRef.current.value.trim(),
-        pw:pwRef.current.value.trim(),
-        type:"SUBMIT"
-      };
+      const search=await request("search",{username:usernameRef.current.value});
 
-      const response=await request(obj);
+      if(search.message==="NOT FOUND"){
 
-      setSubmitLoad(false);
+        const obj={
+          username:usernameRef.current.value.trim(),
+          fname:fnameRef.current.value.trim(),
+          lname:lnameRef.current.value.trim(),
+          num:numRef.current.value.trim(),
+          pw:pwRef.current.value.trim(),
+        };
 
-      if(response.message==="USER REGISTRATION SUCCESSFUL"){
+        const response=await request("register",obj);
 
-        const res=await fetch("/api/login",{
-          method: "POST",
-          headers:{
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              username: obj.username,
-              pw: obj.pw
-          }),
-        }).then(res=>res.json());
+        if(response.message==="USER REGISTRATION SUCCESSFUL"){
 
-        if(res.message==="ERROR"){
+          const loginObj={
+            username: obj.username,
+            pw: obj.pw
+          };
+
+          const res=await request("login",loginObj);
+
+          setSubmitLoad(false);
+
+          if(res.message==="ERROR"){
+            alert("Some error has occurred!\nPlease try again later.")
+          }else if(res.message==="FOUND"){
+            
+            dispatch(setLogin(res));
+          }
+
+        }else if(search.message==="ERROR"){
           alert("Some error has occurred!\nPlease try again later.")
-        }else if(res.message==="FOUND"){
-          dispatch(setLogin(response));
         }
 
-      }else if(response.message==="ERROR"){
-        alert("Some error has occurred!\nPlease try again later.")
-      }else if(response.message==="FOUND"){
+      }else if(search.message==="FOUND"){
+        setSubmitLoad(false);
+
         setCheck("FOUND");
+      }else{
+        alert("Some error has occurred!\nPlease try again later.")
       }
-      
+
   };
 
   return (

@@ -31,6 +31,7 @@ const List = (props) => {
         }).then(res=>res.json());
 
         if(props.type==="inbox"){
+            
             const mails=response.mails.filter((mail)=>{
                 return mail.stat!=="SENT";
             });

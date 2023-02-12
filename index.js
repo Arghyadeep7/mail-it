@@ -84,38 +84,39 @@ app.post("/api/login",(req,res)=>{
 
 });
 
-app.post("/api/register",(req,res)=>{
+app.post("/api/search",(req,res)=>{
 
     const username=req.body.username;
 
     User.collection.findOne({username:username},(err,foundItem)=>{
         if(err){
-            console.log(err);
-        }else if(foundItem===null){
-            if(req.body.type==="SEARCH"){
-                return res.status(400).json({message:"NOT FOUND"});
-            }else{
-                const user= new User({
-                    username: username,
-                    fname: req.body.fname,
-                    lname: req.body.lname?req.body.lname:"",
-                    num: req.body.num?req.body.num:"",
-                    pw: req.body.pw,
-                    mails: []
-                });
-            
-                User.collection.insertOne(user,(err)=>{
-                    if(err){
-                        return res.status(400).json({message:"ERROR"});
-                    }else{
-                        console.log("USER REGISTRATION SUCCESSFUL");
-                        return res.status(200).json({message:"USER REGISTRATION SUCCESSFUL"});
-                    }
-                });
-            }
+            return res.status(400).json({message:"ERROR"});
+        }else if(foundItem==null){
+            return res.status(400).json({message:"NOT FOUND"});
         }else{
             console.log("Username already EXISTS!");
             return res.status(200).json({message:"FOUND"});
+        }
+    });
+});
+
+app.post("/api/register",(req,res)=>{
+
+    const user= new User({
+        username: req.body.username,
+        fname: req.body.fname,
+        lname: req.body.lname?req.body.lname:"",
+        num: req.body.num?req.body.num:"",
+        pw: req.body.pw,
+        mails: []
+    });
+
+    User.collection.insertOne(user,(err)=>{
+        if(err){
+            return res.status(400).json({message:"ERROR"});
+        }else{
+            console.log("USER REGISTRATION SUCCESSFUL");
+            return res.status(200).json({message:"USER REGISTRATION SUCCESSFUL"});
         }
     });
 
