@@ -94,7 +94,7 @@ const SinglePage = (props) => {
     <Container fluid>
       {data && (
         <>
-          <div style={{ margin: "10px" }}>
+          <div style={{ margin: "20px 5px" }}>
             <Link
               to={"/"+props.type}
               className={styles.btn}
