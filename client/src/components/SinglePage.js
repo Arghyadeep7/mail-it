@@ -192,10 +192,10 @@ const SinglePage = (props) => {
               </Col>
               <Col xs={12} className={styles.info}>
                 <Row>
-                  <Col xs={data.msg.length<30?3:12} md={2} lg={1} style={{marginBottom:"10px"}}>
+                  <Col xs={3} md={2} lg={1} style={{marginBottom:"10px"}}>
                     <span className={styles.field}>Body</span>
                   </Col>
-                  <Col xs={data.msg.length<30?9:12} md={10} lg={11} style={{whiteSpace: "pre-wrap"}}>
+                  <Col xs={9} md={10} lg={11} style={{whiteSpace: "pre-wrap"}}>
                       {data.msg?data.msg:<i>(No body)</i>}
                   </Col>
                 </Row>
