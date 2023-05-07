@@ -48,7 +48,7 @@ const SingleMail = (props) => {
 
     return (
         <Link to={_id} className={styles.link}>
-            <Row className={styles.container} style={{background:stat==="NEW"?"white":"whitesmoke"}}>
+            <Row className={styles.container} style={{background:stat==="NEW"?"white":"whitesmoke", borderColor:stat==="NEW"?"red":""}}>
                 <Col xs={5} md={2}>
                     <div className={styles.wrap}>{props.type==="sent"?receiver:sender}</div>
                     <div className={styles.wrap}><u style={{fontSize:"12px",color:"blue"}}>{props.type==="sent"?receiverAdd:senderAdd}</u></div>
