@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-    {loggedIn && <Header />}
+    {loggedI && <Header />}
     <Routes>
       <Route path="/" element={ !loggedIn?<Default />:<Navigate replace to="/inbox" />    } />
       <Route path="/login" element={ !loggedIn?<Login />:<Navigate replace to="/inbox" />    } />
